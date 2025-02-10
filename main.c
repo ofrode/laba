@@ -9,10 +9,12 @@ struct mass sum(struct mass* a, struct mass* b) {
     return c;
 }
 
-void main()
+int main()
 {
     struct mass m = {2.3};
     struct mass n = {4};
     struct mass m2 = sum(&m, &n);
     printf("Sum is %f\n", m2.mass);
+    printf("Hellow wolrldfmawnvnwanvanves");
+    return 0;
 }
