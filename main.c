@@ -16,5 +16,6 @@ int main()
     struct mass m2 = sum(&m, &n);
     printf("Sum is %f\n", m2.mass);
     printf("Hellow wolrldfmawnvnwanvanves");
+
     return 0;
 }
