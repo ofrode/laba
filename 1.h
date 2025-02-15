@@ -8,6 +8,7 @@
 #include <malloc.h>
 #include <limits.h>
 #include <locale.h>
+#include <string.h>
 
 int check(int a, int b) {
     int c;
@@ -134,4 +135,20 @@ int getline(char **lineptr, int *n, FILE *stream)
 
     (*lineptr)[pos] = '\0';
     return pos;
+}
+
+void input_line(char ** str)
+{
+    ssize_t length = 0;
+    int read;
+
+    getline(str, &length, stdin);
+
+
+    if (read == -1)
+    {
+        puts("Ошибка ввода");
+        exit(EXIT_FAILURE);
+    }
+    read--;
 }
