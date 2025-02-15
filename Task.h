@@ -9,7 +9,7 @@ void write_to_file(const char *filename) {
         return;
     }
     int num;
-    printf("For end write -1):\n");
+    printf("For end write -1:\n");
     while (scanf_s("%d", &num) && num != -1) {
         fwrite(&num, sizeof(int), 1, file);
     }

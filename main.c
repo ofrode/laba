@@ -17,25 +17,36 @@ int main() {
     int amount_value;
     int number;
     while (1) {
-        printf("Task - (1 - 4)\nRead file - 5\nEnd - 0: ");
+        printf("Menu:\nTask 1 - 4:\nRead file 5\nEnd my mega super puper respect project");
         task = check(0, 5);
         switch (task) {
             case 1:
+                puts("Task 1");
                 write_to_file(name);
+                puts("End task without errors");
                 break;
             case 2:
+                puts("Task 2");
+                puts("Input value");
                 value = check(MIN, MAX);
                 amount_value = finding_value(name, value);
-                printf("%d\n", amount_value);
+                printf("How many %d in file %d\n", value, amount_value);
+                puts("End task without errors");
                 break;
             case 3:
+                puts("Task 3");
+                puts("Input value");
                 value = check(MIN, MAX);
                 number_replacement_by_the_maximum(name, value);
+                puts("End task without errors");
                 break;
             case 4:
+                puts("Task 4");
                 sort(name);
+                puts("End task without errors");
                 break;
             case 5:
+                puts("Read file");
                 read_from_file(name);
                 break;
             case 0:
