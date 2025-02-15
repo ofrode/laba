@@ -1,21 +1,15 @@
 #include "1.h"
 #include "Task.h"
 
-enum{
+enum {
     MIN = INT_MIN,
     MAX = INT_MAX
 };
 
 int main() {
-    FILE *fp;
     char name[256];
     fgets(name, 256, stdin);
     name[strcspn(name, "\n")] = '\0';
-
-    if ((fp = fopen(name, "w+b")) == NULL) {
-        perror("Error");
-        return 1;
-    }
 
     int task;
     int value;
@@ -27,29 +21,25 @@ int main() {
         task = check(0, 5);
         switch (task) {
             case 1:
-                amount = check(1, MAX);
-                for (int i = 0; i < amount; i++) {
-                    number = check(MIN, MAX);
-                    fwrite(&number, sizeof(int), 1, fp);
-                }
+                write_to_file(name);
                 break;
             case 2:
                 value = check(MIN, MAX);
-                amount_value = finding_value(fp, value);
+                amount_value = finding_value(name, value);
                 printf("%d\n", amount_value);
                 break;
             case 3:
                 value = check(MIN, MAX);
-                number_replacement_by_the_maximum(fp, value);
+                number_replacement_by_the_maximum(name, value);
                 break;
             case 4:
-                sort(fp);
+                sort(name);
                 break;
             case 5:
-                read_from_file(fp);
+                read_from_file(name);
                 break;
             case 0:
-                fclose(fp);
+                fclose(name);
                 return 0;
             default:
                 printf("Error\n");

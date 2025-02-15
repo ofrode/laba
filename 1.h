@@ -19,12 +19,12 @@ int check(int a, int b) {
                 break;
             }
             else {
-                printf("Erorr\n");
+                printf("\n");
             }
         }
         else
         {
-            printf("Erorr\n");
+            printf("\n");
         }
     }
     return c;
@@ -43,7 +43,7 @@ int p() {
         }
         else
         {
-            printf("Erorr\n");
+            printf("\n");
         }
 
     }
@@ -147,7 +147,7 @@ void input_line(char ** str)
 
     if (read == -1)
     {
-        puts("Ошибка ввода");
+        puts("");
         exit(EXIT_FAILURE);
     }
     read--;
