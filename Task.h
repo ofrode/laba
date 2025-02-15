@@ -70,50 +70,6 @@ void number_replacement_by_the_maximum(const char *filename, int value)
     fclose(file);
 }
 
-void swap_numbers_in_file(FILE* file, int posA, int posB) {
-
-    int numA, numB;
-
-    fseek(file, posA * sizeof(int), SEEK_SET);
-    fread(&numA, sizeof(int), 1, file);
-
-    fseek(file, posB * sizeof(int), SEEK_SET);
-    fread(&numB, sizeof(int), 1, file);
-
-    fseek(file, posA * sizeof(int), SEEK_SET);
-    fwrite(&numB, sizeof(int), 1, file);
-
-    fseek(file, posB * sizeof(int), SEEK_SET);
-    fwrite(&numA, sizeof(int), 1, file);
-
-}
-
-int get_file_size(FILE* file) {
-
-    fseek(file, 0, SEEK_END);
-    int size = ftell(file);
-    rewind(file);
-    return size;
-}
-
-void find_odd(FILE* file, int* a, int* b)
-{
-    int num;
-    int pos = 0;
-
-    while (fread(&num, sizeof(int), 1, file))
-    {
-        if (num % 2 != 0)
-        {
-            *a = num;
-            *b = pos;
-        }
-        pos++;
-    }
-}
-
-
-
 void sort(const char *filename) {
     FILE *file = fopen(filename, "r+b");
     if (!file) {
@@ -165,8 +121,6 @@ void sort(const char *filename) {
     }
     fclose(file);
 }
-
-
 
 void read_from_file(const char *filename)
 {
