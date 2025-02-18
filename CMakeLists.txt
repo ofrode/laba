@@ -5,4 +5,5 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(laba_1 main.c
         1.h
-        Task.h)
+        Task.h
+        main.c)
