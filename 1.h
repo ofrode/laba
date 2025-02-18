@@ -45,7 +45,6 @@ int p() {
         if (p_2(in, &Int) == 1) {
             break;
         } else if (in[0] == '\n') {
-            // Если введена пустая строка, возвращаем специальное значение
             return INT_MIN;
         } else {
             printf("Invalid input. Please enter an integer: ");

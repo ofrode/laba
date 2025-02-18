@@ -77,41 +77,33 @@ void number_replacement_by_the_maximum(const char *filename, int value)
 }
 
 void sort(const char *filename) {
-    // Открываем файл для чтения и записи
     FILE *file = fopen(filename, "r+b");
     if (!file) {
         perror("Error opening file");
         return;
     }
 
-    // Определяем размер файла
     fseek(file, 0, SEEK_END);
     long file_size = ftell(file);
     rewind(file);
 
-    // Если файл пуст, завершаем выполнение
     if (file_size == 0) {
         printf("File is empty.\n");
         fclose(file);
         return;
     }
 
-    // Вычисляем количество элементов в файле
     size_t num_elements = file_size / sizeof(int);
 
-    // Сортировка нечётных чисел по убыванию
     for (size_t i = 0; i < num_elements; i++) {
-        // Читаем текущий элемент
         int current;
         fseek(file, i * sizeof(int), SEEK_SET);
         fread(&current, sizeof(int), 1, file);
 
-        // Если текущий элемент нечётный, ищем максимальный нечётный элемент после него
         if (current % 2 == 1) {
             int max_odd = current;
             size_t max_index = i;
 
-            // Поиск максимального нечётного элемента после текущего
             for (size_t j = i + 1; j < num_elements; j++) {
                 int next;
                 fseek(file, j * sizeof(int), SEEK_SET);
@@ -123,25 +115,20 @@ void sort(const char *filename) {
                 }
             }
 
-            // Если найден максимальный нечётный элемент, меняем их местами
             if (max_index != i) {
-                // Читаем элемент, который нужно заменить
                 int temp;
                 fseek(file, i * sizeof(int), SEEK_SET);
                 fread(&temp, sizeof(int), 1, file);
 
-                // Записываем максимальный нечётный элемент на место текущего
                 fseek(file, i * sizeof(int), SEEK_SET);
                 fwrite(&max_odd, sizeof(int), 1, file);
 
-                // Записываем текущий элемент на место максимального
                 fseek(file, max_index * sizeof(int), SEEK_SET);
                 fwrite(&temp, sizeof(int), 1, file);
             }
         }
     }
 
-    // Закрываем файл
     fclose(file);
 
     printf("Sorting completed successfully.\n");
